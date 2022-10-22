@@ -4,7 +4,7 @@ $conexion = conectar();
 
 $productos = "SELECT * FROM productos";
 //$resultado = mysqli_query($conexion, $productos);
-$resultado = $conexion->query($mostrar);
+$resultado = $conexion->query($productos);
 ?>
 
 <!DOCTYPE html>

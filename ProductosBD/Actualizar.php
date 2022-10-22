@@ -2,14 +2,11 @@
 include '../ConexionBD/Conexion.php';
 $conexion = conectar();
 
-
 $id = $_REQUEST['id'];
 
-$productos = "SELECT * FROM productos WHERE = Id_producto = '$id'";
-$resultado = $conexion->query($mostrar);
+$productos = "SELECT * FROM productos WHERE Id_producto = '$id'";
+$resultado = $conexion->query($productos);
 $mostrar = $resultado->fetch_assoc();
-//$mostrar = mysqli_fetch_array($resultado);
-
 ?>
 
 <!DOCTYPE html>
