@@ -2,12 +2,14 @@
 include '../ConexionBD/Conexion.php';
 $conexion = conectar();
 
-$id = $_GET['id'];
+
+$id = $_REQUEST['id'];
 
 $productos = "SELECT * FROM productos WHERE = Id_producto = '$id'";
-$resultado = mysqli_query($conexion, $productos);
+$resultado = $conexion->query($mostrar);
+$mostrar = $resultado->fetch_assoc();
+//$mostrar = mysqli_fetch_array($resultado);
 
-$mostrar = mysqli_fetch_array($resultado);
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +26,11 @@ $mostrar = mysqli_fetch_array($resultado);
 <div class="container mt-5"> 
     <form action="Update.php" method="POST">
         <input type="hidden" name="Id_producto" value="<?php echo $mostrar['Id_producto'] ?>">
-        <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre" value="<?php echo $mostrar['Nombre']?>" >
+        <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre" value="<?php echo $mostrar['Nombre']?>">
         <input type="text" class="form-control mb-3" name="Precio" placeholder="Precio" value="<?php echo $mostrar['Precio']?>">
         <input type="text" class="form-control mb-3" name="Existencia_L" placeholder="Existencia" value="<?php echo $mostrar['Existencia_L']?>">
+        <img width="130px" height="90px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
+        <input type="file" REQUIRED class="form-control mb-3" name="Imagen" accept="image/*">
         <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
     </form>
 </div>

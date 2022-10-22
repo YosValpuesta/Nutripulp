@@ -1,8 +1,10 @@
 <?php
 include '../ConexionBD/Conexion.php';
 $conexion = conectar();
+
 $productos = "SELECT * FROM productos";
-$resultado = mysqli_query($conexion, $productos);
+//$resultado = mysqli_query($conexion, $productos);
+$resultado = $conexion->query($mostrar);
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +45,7 @@ $resultado = mysqli_query($conexion, $productos);
                         <td class="encabezado"></td>
                     </tr>
             <?php
-                while ($mostrar = mysqli_fetch_array($resultado)) { 
+                while ($mostrar = $resultado->fetch_assoc()) { 
             ?>
                     <tr>
                         <td><?php echo $mostrar["Id_producto"]; ?></td>
