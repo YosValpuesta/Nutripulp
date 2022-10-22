@@ -6,7 +6,7 @@ $id_producto = $_POST['Id_producto'];
 $nombre = $_POST['Nombre'];
 $precio = $_POST['Precio'];
 $existencia = $_POST['Existencia_L'];
-$imagen = addcslashes(file_get_contents($_FILES["Imagen"]["tmp_name"])); //Guarda los bits 
+$imagen = addslashes(file_get_contents($_FILES["Imagen"]["tmp_name"])); //Guarda los bits 
 
 $productos = "INSERT INTO productos VALUES('$id_producto','$nombre','$precio','$existencia','$imagen')";
 $resultado = mysqli_query($conexion, $productos);
