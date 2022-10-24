@@ -26,8 +26,6 @@ $mostrar = $resultado->fetch_assoc();
         <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre" value="<?php echo $mostrar['Nombre']?>">
         <input type="text" class="form-control mb-3" name="Precio" placeholder="Precio" value="<?php echo $mostrar['Precio']?>">
         <input type="text" class="form-control mb-3" name="Existencia_L" placeholder="Existencia" value="<?php echo $mostrar['Existencia_L']?>">
-        <img width="130px" height="90px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
-        <input type="file" REQUIRED class="form-control mb-3" name="Imagen" accept="image/*">
         <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
     </form>
 </div>

@@ -1,6 +1,13 @@
 <?php
 session_start();
 include("AgregarCarrito.php");
+
+include 'ConexionBD/Conexion.php';
+$conexion = conectar();
+
+$productos = "SELECT * FROM productos WHERE Id_producto = 1";
+$resultado = $conexion->query($productos);
+$mostrar = $resultado->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -28,19 +35,19 @@ include("AgregarCarrito.php");
     </header>
     <br>
     <div class="producto">
-        <br><br><img src="Fresa.png" width="350px" height="280px">
+        <br><br><img width="350px" height="280px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
         <div class="info">
             <h4>Vendidos:</h4>
-            <h1>Pulpa de Fresa</h1>
-            <h2>Lt: $55.00</h2>
+            <h1><?php echo $mostrar["Nombre"]; ?></h1>
+            <h2>Lt: $ <?php echo $mostrar["Precio"]; ?></h2>
             <p>Producto más vendido</p>
         </div>
         <div class="info">
-            <h4>Disponibles:</h4>
+            <h4>Disponibles: <?php echo $mostrar["Existencia_L"]; ?></h4>
             <h2>Cantidad:</h2>
             <center><form class="formulario" action="Vista1.php" method="POST">
                 <input type="hidden" name="txtProducto" value="Pulpa de Fresa">
-                <input class="cantidad" type="number" name="txtCantidad" value="1"><br><br><br>
+                <input class="cantidad" type="number" name="txtCantidad" value="1"><br><br><br> 
                 <input type="hidden" name="txtPrecio" value="55">
                 <input class="botones" type="submit" value="Agregar al carrito" name="btnAgregar"><br><br>
                 <input class="botones" type="submit" value="Comprar ahora" name="btnComprar">

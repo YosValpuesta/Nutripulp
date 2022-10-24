@@ -3,7 +3,6 @@ include '../ConexionBD/Conexion.php';
 $conexion = conectar();
 
 $productos = "SELECT * FROM productos";
-//$resultado = mysqli_query($conexion, $productos);
 $resultado = $conexion->query($productos);
 ?>
 
@@ -16,13 +15,17 @@ $resultado = $conexion->query($productos);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="Productos.css">
+    <link rel="stylesheet" href="../General.css">
     <title>Prueba: Productos</title>
 </head>
 <body>
+<header> 
+    <img id="Logo" src="Logo.png" width="250px" height="165px"> 
+</header>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4">
-                <h2>Agregar nuevos productos</h2>
+                <h1>Agregar</h1>
                 <form action="Insertar.php" method="POST" enctype="multipart/form-data">
                     <input type="text" REQUIRED class="form-control mb-3" name="Id_producto" placeholder="id">
                     <input type="text" REQUIRED class="form-control mb-3" name="Nombre" placeholder="Nombre">
@@ -33,7 +36,7 @@ $resultado = $conexion->query($productos);
                 </form>
             </div>
             <div class="col-md-8">
-                <h2>Productos registrados</h2>
+                <h1>Productos registrados</h1>
                 <center><table  cellspacing="6" cellpadding="6" border="12">
                     <tr>
                         <td class="encabezado">Id producto</td>

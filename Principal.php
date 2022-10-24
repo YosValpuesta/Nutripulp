@@ -1,7 +1,3 @@
-<?php
-//include 'Busqueda.php'
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +32,7 @@
         </ul>
     </div>
     <h1>Productos más vendidos</h1>
+
     <div class = "galeria" >
         <div class = "foto">
             <a href="Vista12.php"><img src="Guayaba.png" alt=""></a>

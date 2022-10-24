@@ -1,6 +1,13 @@
 <?php
 session_start();
 include("AgregarCarrito.php");
+
+include 'ConexionBD/Conexion.php';
+$conexion = conectar();
+
+$productos = "SELECT * FROM productos WHERE Id_producto = 2";
+$resultado = $conexion->query($productos);
+$mostrar = $resultado->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -28,14 +35,14 @@ include("AgregarCarrito.php");
     </header>
     <br>
     <div class="producto">
-        <br><br><img src="BlueBerry.png" width="350px" height="280px">
+    <br><br><img width="350px" height="280px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
         <div class="info">
             <h4>Vendidos:</h4>
-            <h1>Pulpa de Blueberry</h1>
-            <h2>Lt: $110.00</h2>
+            <h1><?php echo $mostrar["Nombre"]; ?></h1>
+            <h2>Lt: $ <?php echo $mostrar["Precio"]; ?></h2>
         </div>
         <div class="info">
-            <h4>Disponibles:</h4>
+            <h4>Disponibles: <?php echo $mostrar["Existencia_L"]; ?></h4>
             <h2>Cantidad:</h2>
             <center><form class="formulario" action="Vista2.php" method="POST">
                 <input type="hidden" name="txtProducto" value="Pulpa de Blueberry">

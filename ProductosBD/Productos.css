@@ -1,44 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /* h1 */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /* Info */
 
-*{
-    margin: 0;
-    left: 0;
-    top: 0;
-    background-color: #ffffff;
-}
-
-header{
-    background-color: brown;
-    display: flex;
-    height: 130px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-#Logo{
-    display: flex;
-    background: none;
-    align-items: center;
-}
-
 table{
     align-self: center;
     border-color: black;
     text-align: center;
 }
 
-h1{
-    font-family: 'Indie Flower', cursive;
-    font-size: 60px;
-    text-align: center;
-}
-
 td{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 td.encabezado{

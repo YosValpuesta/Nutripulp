@@ -2,7 +2,7 @@
 include '../ConexionBD/Conexion.php';
 $conexion = conectar();
 
-$id = $_REQUEST['id'];
+$id = $_REQUEST['Id_producto'];
 
 $id_producto = $_POST['Id_producto'];
 $nombre = $_POST['Nombre'];
@@ -14,8 +14,7 @@ $productos = "UPDATE productos SET Nombre = '$nombre',Precio = '$precio',Existen
 $resultado = $conexion->query($productos);
 
 if ($resultado) {
-    //Header("Location: Productos2.php");
-    echo "SE MODIFIcO";
+    Header("Location: Productos2.php");
 } else {
     echo "error";
 }

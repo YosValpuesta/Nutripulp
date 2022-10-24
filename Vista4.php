@@ -1,6 +1,13 @@
 <?php
 session_start();
 include("AgregarCarrito.php");
+
+include 'ConexionBD/Conexion.php';
+$conexion = conectar();
+
+$productos = "SELECT * FROM productos WHERE Id_producto = 4";
+$resultado = $conexion->query($productos);
+$mostrar = $resultado->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +38,11 @@ include("AgregarCarrito.php");
         <br><br><img src="Zarzamora.png" width="350px" height="280px">
         <div class="info">
             <h4>Vendidos:</h4>
-            <h1>Pulpa de Zarzamora</h1>
-            <h2>Lt: $110.00</h2>
-            <p>Producto más vendido</p>
+            <h1><?php echo $mostrar["Nombre"]; ?></h1>
+            <h2>Lt: $ <?php echo $mostrar["Precio"]; ?></h2>
         </div>
         <div class="info">
-            <h4>Disponibles:</h4>
+            <h4>Disponibles: <?php echo $mostrar["Existencia_L"]; ?></h4>
             <h2>Cantidad:</h2>
             <center><form class="formulario" action="Vista4.php" method="POST">
                 <input type="hidden" name="txtProducto" value="Pulpa de Zarzamora">

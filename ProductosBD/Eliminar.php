@@ -2,10 +2,10 @@
 include '../ConexionBD/Conexion.php';
 $conexion = conectar();
 
-$id_producto = $_GET['id'];
+$id = $_REQUEST['id'];
 
-$productos = "DELETE FROM productos WHERE Id_producto = '$id_producto'";
-$resultado = mysqli_query($conexion, $productos);
+$productos = "DELETE FROM productos WHERE Id_producto = '$id'";
+$resultado = $conexion->query($productos);
 
 if ($resultado){
     Header("Location: Productos2.php");

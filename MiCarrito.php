@@ -16,30 +16,25 @@ session_start();
         </nav>
 </header>
 <h1>Carrito de compras</h1>
-
 <?php
-$precioProducto = 0;
-$subTotal = 0;
+$precioProducto = $arreglo["cantidad"] * $arreglo["precio"]; 
+$subTotal = 0; 
 $precioTotal = 0;
-if (isset($_SESSION["MiCarrito"])) { 
-    //Indice=producto y Arreglo=cantidad y precio
-    foreach ($_SESSION["MiCarrito"] as $indice => $arreglo) {  
-    //$subTotal += $arSreglo["cantidad"] * $arreglo["precio"];
+if (isset($_SESSION["MiCarrito"])) { //Indice=producto y Arreglo=cantidad y precio
+    foreach ($_SESSION["MiCarrito"] as $indice => $arreglo) {
 ?>
     <div class="Micarrito">
-        <!-- img -->
         <div class="info">
             <h2> <?php echo "<strong>". $indice . "</strong>"; ?> </h2> 
         </div>
-        <div class="info">
-        <!-- Cantidad tanto, precio tanto -->
+        <div class="info"> <!-- Cantidad tanto, precio tanto -->
             <h3><?php foreach ($arreglo as $key => $value) { 
                 echo $key .": " . $value . "<br>";
                 } ?>
             </h3>
         </div>
         <div class="info">
-            <h3><br> <?php echo "<hr>$: <strong>". $precioProducto . "</strong><br>"; ?> </h3>
+            <h3><br><?php echo "<hr>$: <strong>". $precioProducto . "</strong><br>"; ?> </h3>
         </div>
     </div>
 
