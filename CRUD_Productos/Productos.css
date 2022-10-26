@@ -15,5 +15,11 @@ td{
 td.encabezado{
     font-size: 18px;
     font-weight: 1000;
-    background-color: blueviolet;
+    background-color: brown;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 70px;
 }

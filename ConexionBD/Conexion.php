@@ -1,12 +1,9 @@
 <?php
-function conectar() {
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $bd = "nutripulp";
-
-    $conexion = mysqli_connect($host,$user,$pass);
-    mysqli_select_db($conexion,$bd);
-    return $conexion;
-}
+    $conexion = new mysqli("localhost", "root", "", "nutripulpproyecto");
+    
+    if ($conexion) {
+        
+    } else {
+        echo "No conecto";
+    }
 ?>
