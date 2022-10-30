@@ -1,5 +1,5 @@
 <?php
-    $conexion = new mysqli("localhost", "root", "", "nutripulpproyecto");
+    $conexion = new mysqli("localhost", "root", "", "nutripulp");
     
     if ($conexion) {
         

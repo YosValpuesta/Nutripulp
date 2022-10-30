@@ -24,7 +24,7 @@ $resultado = $conexion->query($productos);
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4">
-                <h1>Agregar</h1>
+                <h2>Agregar</h2>
                 <form action="Insertar.php" method="POST" enctype="multipart/form-data">
                     <input type="text" REQUIRED class="form-control mb-3" name="Nombre" placeholder="Nombre">
                     <input type="text" REQUIRED class="form-control mb-3" name="Precio" placeholder="Precio">
@@ -34,7 +34,7 @@ $resultado = $conexion->query($productos);
                 </form>
             </div>
             <div class="col-md-8">
-                <h1>Productos registrados</h1>
+                <h2>Productos registrados</h2>
                 <center><table  cellspacing="6" cellpadding="6" border="12">
                     <tr> 
                         <td class="encabezado">ID</td>
