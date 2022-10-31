@@ -16,17 +16,18 @@ $resultado = $conexion->query($productos);
     <link rel="stylesheet" href="MenuPulpas.css">
 </head>
 <body>
-    <header> 
+<header> 
     <img id="Logo" src="Logo.png" width="250px" height="165px"> 
         <input id="Barra" type="search" placeholder="Buscar">
         <nav>
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
-            <a href="">Menú</a>
+            <a href="MenuPulpas.html">Menú</a>
             <a href="MiCarrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
-    </header>
-    <br><h1>Pulpas de Fruta</h1>
+</header>
+
+    <h1>Pulpas de Fruta</h1>
     <?php
         while ($mostrar = $resultado->fetch_assoc()) { 
     ?>
@@ -45,13 +46,14 @@ $resultado = $conexion->query($productos);
     <?php
         } 
     ?>
+
     <footer>
         <div class="grupo1">
             <div class="box">
-                <center><h2>SOBRE NOSOTROS</h2></center>
-                <p>Nutripulp es una empresa mexicana dedicada a la
-                venta de pulpas de fruta natural.</p>
-                <p>Entrega gratis desde $595</p>
+                <center><h2>Contacto</h2></center>
+                <p>Whatsapp: 5575625202
+                   Telefono: 55 5603 3859</p>
+                <p>Email: ventas@nutripulp.com</p>
             </div>
             <div class="box">
                 <h2>SIGUENOS EN REDES</h2>

@@ -14,27 +14,29 @@ $resultado = $conexion->query($productos);
     <link rel="stylesheet" href="SliderImg/Slider.css">
     <link rel="stylesheet" href="General.css">
     <link rel="stylesheet" href="MenuPulpas.css">
+    
     <title>Nutripulp</title>
 </head>
 <body>
 <header> 
-    <img src="Logo.png" width="250px" height="165px"> 
+    <img id="Logo" src="Logo.png" width="250px" height="165px">  
     <form action="" method="GET">
         <input id="busqueda" type="search" placeholder="Buscar" name="busqueda">
     </form>
         <nav>
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
-            <a href="MenuPulpas.html">Menú</a>
+            <a href="MenuPulpas.php">Menú</a>
             <a href="MiCarrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
 </header>
+
     <div class = "slider">
         <ul>
-            <li><img src="SliderImg/Slider1.jpg" alt=""></li>
-            <li><img src="SliderImg/Slider2.jpg" alt=""></li>
-            <li><img src="SliderImg/Slider3.jpg" alt=""></li>
-            <li><img src="SliderImg/Slider4.jpg" alt=""></li>
+            <li><img src="SliderImg/Slider1.jpg"></li>
+            <li><img src="SliderImg/Slider2.jpg"></li>
+            <li><img src="SliderImg/Slider3.jpg"></li>
+            <li><img src="SliderImg/Slider4.jpg"></li>
         </ul>
     </div>
 
@@ -49,6 +51,9 @@ $resultado = $conexion->query($productos);
             <div class = "datos">
                 <p>1Lt <?php echo $mostrar["Nombre"]; ?></p>
                 <p>$<?php echo $mostrar["Precio"]; ?></p> 
+                <form class="boton1" action="VistaProducto.php?id=<?php echo $mostrar['id']; ?>" method="POST" enctype="multipart/form-data">
+                    <input class="boton" type="submit" value="Ver producto" name="btnVer">
+                </form>
             </div>
         </div>
     <?php

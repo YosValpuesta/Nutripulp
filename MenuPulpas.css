@@ -1,15 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*footer, botones*/
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /*h1, datos*/
 
-h1{
-    color:rgb(19, 19, 19);
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 45px;
-    font-family: 'Indie Flower', cursive;
-    font-size: 70px;
-}
-
-div.galeria{
+div.galeria {
     margin: 15px 21px;
     box-shadow: 0 4px 8px 0 cyan, 0 6px 20px 0 black;
     float: left;
@@ -17,12 +9,12 @@ div.galeria{
     margin-left: 42px;
 }
 
-div.galeria img{
+div.galeria img {
     width: 100%;
     height: auto;
 }
 
-div.datos{
+div.datos {
     text-align: center;
     text-shadow: 2px 2px 5px yellowgreen;
     padding: 10px;
@@ -30,6 +22,21 @@ div.datos{
     font-size: 30px;
 }
 
-.galeria .datos .boton1 .boton{
-    background-color: rgb(174, 136, 70);
+/*Boton Ver Producto*/
+.galeria .datos .boton1 .boton { 
+    background-color: rgb(87, 155, 55);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 70%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    height: 40px;
+}
+
+.galeria .datos .boton1 .boton:hover {
+    background-color: rgb(191, 202, 35);
+    color: rgb(0, 0, 0);
+    cursor: pointer; 
+    transform: translatex(0px);
+    opacity: 1;
 }

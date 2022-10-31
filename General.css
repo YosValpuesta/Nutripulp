@@ -1,13 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*Letra del footer*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*footer, botones*/
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /*h1, datos*/
 
-*{
+* {
     margin: 0;
     left: 0;
     top: 0;
     background-color: #EFECEC;
 }
 
-header{
+h1 {
+    color:rgb(19, 19, 19);
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 45px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 70px;
+}
+
+header {
     background-color: brown;
     display: flex;
     height: 130px;
@@ -17,22 +27,18 @@ header{
     border-radius: 4px;
 }
 
-#Logo{
+#Logo {
     display: flex;
     background: none;
     align-items: center;
 }
 
-nav a{
+nav a {
     font-size: 30px;
     font-weight: 600;
     padding-right: 20px;
     text-decoration: none;
     color: black;
-}
-
-nav a:hover{
-    color: rgb(233, 150, 41);
 }
 
 #busqueda {
@@ -52,16 +58,8 @@ input {
     border: 3px solid black;
 }
 
-#btnbuscar {
-    background-color: #cdc757;
-    left: 50%;
-	top: 5%;
-    position: absolute;
-    width: 55px;
-    font-size: 15px;
-}
-
-footer .grupo1{
+/*Todo del footer*/
+footer .grupo1 {
     background-color: #5f768a;
     display: flex;
     border-radius: 4px;
@@ -76,11 +74,11 @@ footer .grupo1{
     padding: 20px 10px;
 }
 
-footer .grupo1 .box{
+footer .grupo1 .box {
     background-color: #5f768a;
 }
 
-footer .grupo1 .box h2{
+footer .grupo1 .box h2 {
     color: rgb(255, 255, 255);
     background-color: #5f768a;
     font-size: 25px;
@@ -88,7 +86,7 @@ footer .grupo1 .box h2{
     font-family: 'IBM Plex Mono', monospace;
 }
 
-footer .grupo1 .box p{
+footer .grupo1 .box p {
     color: rgb(226, 226, 238);
     background-color: #5f768a;
     margin-bottom: 10px;
@@ -101,7 +99,7 @@ footer .grupo1 .redes{
     background-color: #5f768a;
 }
 
-footer .grupo1 .redes a{
+footer .grupo1 .redes a {
     background-color: #6b90b0;
     display: inline-block;
     text-decoration: none;
@@ -114,11 +112,11 @@ footer .grupo1 .redes a{
     transition: all 300ms ease;
 }
 
-footer .grupo1 .redes a:hover{
+footer .grupo1 .redes a:hover {
     color: rgb(21, 224, 157);
 }
 
-footer .grupo2{
+footer .grupo2 {
     width: 98%;
     margin: auto;
     display: grid;
@@ -128,13 +126,13 @@ footer .grupo2{
     color: rgb(0, 0, 0);
 }
 
-footer .grupo2 small{
+footer .grupo2 small {
     background-color: #5f768a;
     font-size: 13px;
     font-family: 'IBM Plex Mono', monospace;
 }
 
-footer .grupo2 b{
+footer .grupo2 b {
     background-color: #5f768a;
     font-family: 'IBM Plex Mono', monospace;
 }

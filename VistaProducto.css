@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*Info producto*/
+
+div.producto{
+    background-color: rgb(135, 111, 176); 
+    display: flex;
+    height: 290px;
+    width: 97%;
+    margin: auto;
+    border-radius: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 80px;
+    padding: 30px 10px;
+}
+
+.producto .info{
+    width: 30%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(135, 111, 176); 
+    margin-bottom: 10px;
+}
+
+.producto .info h3{
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.644);
+    background-color: rgb(135, 111, 176);
+    margin-bottom: -10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+}
+
+.producto .info h4{
+    margin-top: -15px;
+    color: rgba(0, 0, 0, 0.644);
+    background-color: rgb(135, 111, 176);
+    margin-bottom: -60px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+}
+
+.producto .info h1{
+    color: rgb(0, 0, 0);
+    background-color: rgb(135, 111, 176);
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 59px;
+}
+
+.producto .info h2{
+    margin-top: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(135, 111, 176);
+    margin-bottom: 90px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 30px;
+}
+
+.producto .info .formulario{
+    background-color: rgb(135, 111, 176);
+    margin-top: -70px;
+    margin-bottom: 10px;
+}
+
+.producto .info .formulario .cantidad{
+    color: black;
+    font-size: 30px;
+    width: 30%;
+    text-align: center;
+    margin-top: -20px;
+}
+
+/*Botones*/
+.producto .info .formulario .botones { 
+    background-color: rgb(87, 155, 55);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 80%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 25px;
+    height: 50px;
+}
+
+.producto .info .formulario .botones:hover {
+    background-color: rgb(191, 202, 35);
+    color: rgb(0, 0, 0);
+    cursor: pointer; 
+    transform: translatex(0px);
+    opacity: 1;
+}

@@ -4,7 +4,7 @@ session_start();
 
 <title>Carrito de compras</title>
 <link rel="stylesheet" href="General.css">
-<link rel="stylesheet" href="MiCarrito.css">
+<link rel="stylesheet" href="VistaCarrito.css">
 <header> 
     <img id="Logo" src="Logo.png" width="250px" height="165px"> 
     <input id="Barra" type="search" placeholder="Buscar">
