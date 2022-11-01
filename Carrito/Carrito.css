@@ -27,17 +27,15 @@ table .cantidad{
 }
 
 /*Boton Eliminar*/
-table .boton { 
+table .btnEliminar{ 
     background-color: rgb(87, 155, 55);
     color: rgb(255, 255, 255);
     text-align: center;
-    width: 90%;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    height: 40px;
+    font-size: 23px;
 }
 
-table .boton:hover {
+table .btnEliminar:hover {
     background-color: rgb(191, 202, 35);
     color: rgb(0, 0, 0);
     cursor: pointer; 

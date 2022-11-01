@@ -63,6 +63,7 @@ if (isset($_SESSION['carrito'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!--Libreria JQuery-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,12 +105,31 @@ if (isset($_SESSION['carrito'])) {
             <td><h3>$<?php echo $arregloCarrito[$i]['Precio']; ?></h3></td>
             <td id="cantidad"><input class="cantidad" type="number" name="cantidad" value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>"></td>
             <td><h3>$<?php echo $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']; ?></td></h3>
-            <td><input class="boton" type="submit" value="Eliminar" name="btnEliminar"></td>
+            <td><a class="btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id']; ?>">Eliminar</a></td>
         </tr>
     <?php
             }
         }
     ?>
     </table></center>
+
+    <!--Eliminar producto en carrito-->
+    <script> 
+        $(document).ready(function() {
+            $(".btnEliminar").click(function(event) {
+                event.preventDefault();
+                var id = $(this).data('id');
+                var boton = $(this);
+                $.ajax( {
+                    method: 'POST',
+                    url: 'EliminarCarrito.php',
+                    data: {id:id}
+                }).done(function(respuesta) {
+                    boton.parent('td').parent('tr').remove();
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
