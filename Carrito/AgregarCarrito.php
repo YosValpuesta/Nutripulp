@@ -1,12 +1,32 @@
-<?php  //Agregar productos al carrito
-    if (isset($_REQUEST["btnAgregar"])){
-        $producto = $_REQUEST["txtProducto"];
-        $cantidad = $_REQUEST["txtCantidad"];
-        $precio = $_REQUEST["txtPrecio"];
+<?php session_start(); 
 
-        $_SESSION["MiCarrito"][$producto]["cantidad"] = $cantidad;
-        $_SESSION["MiCarrito"][$producto]["precio"] = $precio;
-
-        echo "<script>alert('Producto $producto agregado con éxito al carrito de compras');</script>";
+if (isset($_SESSION['carrito']) || isset($_POST['Nombre'])) {
+    if (isset($_SESSION['carrito'])) {
+        $Micarrito = $_SESSION['carrito'];
+        if (isset($_POST['Nombre'])) {
+            $nombre = $_POST['Nombre'];
+            $precio = $_POST['Precio'];
+            $cantidad = $_POST['cantidad'];
+            $imagen = addslashes(file_get_contents($_FILES["Imagen"]["tmp_name"])); //Guarda los bits 
+            $donde = -1;
+            if ($donde != -1) {
+                $cuanto = $Micarrito[$donde]['cantidad'] + $cantidad;
+                $Micarrito[$donde] = array("Nombre"=>$nombre, "Precio"=>$precio, "cantidad"=>$cuanto, "Imagen"=>$imagen);
+            } else {
+                $Micarrito[] = array("Nombre"=>$nombre, "Precio"=>$precio, "cantidad"=>$cantidad, "Imagen"=>$imagen);
+            }
+        }
+    } else {
+        $nombre = $_POST['Nombre'];
+        $precio = $_POST['Precio'];
+        $cantidad = $_POST['cantidad'];
+        $imagen = addslashes(file_get_contents($_FILES["Imagen"]["tmp_name"])); //Guarda los bits 
+        $Micarrito[] = array("Nombre"=>$nombre, "Precio"=>$precio, "cantidad"=>$cantidad, "Imagen"=>$imagen);
     }
-    ?>
+
+    $_SESSION['carrito'] = $Micarrito;
+}
+
+Header("Location: VistaProducto.php");
+
+?>

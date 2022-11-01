@@ -1,11 +1,24 @@
 <?php session_start();
 include 'ConexionBD/Conexion.php';
 
-$id = $_REQUEST['id'];
+/*$id = $_REQUEST['id'];
 
 $productos = "SELECT * FROM productos WHERE id = '$id' ";
 $resultado = $conexion->query($productos);
-$mostrar = $resultado->fetch_assoc();
+$mostrar = mysqli_fetch_row($resultado);*/
+
+if (isset($_GET['id'])) {
+    $productos = "SELECT * FROM productos WHERE id = " .$_GET['id'];
+    $resultado = $conexion->query($productos);
+    if (mysqli_num_rows($resultado) > 0) {
+        $mostrar = mysqli_fetch_row($resultado);
+    } else {
+        header("Location: MenuPulpas.php");
+    }
+} else {
+    header("Location: MenuPulpas.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +27,7 @@ $mostrar = $resultado->fetch_assoc();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.png">
     <title>Nutripulp: Fresa</title>
     <script src="https://kit.fontawesome.com/2c4007a4a1.js" crossorigin="anonymous"></script> <!--IconosRedes-->
     <link rel="stylesheet" href="General.css">
@@ -35,24 +49,23 @@ $mostrar = $resultado->fetch_assoc();
 
     <br>
     <div class="producto">
-        <br><br><img width="350px" height="280px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
+        <br><br><img width="350px" height="280px" src="data:image/png;base64,<?php echo base64_encode($mostrar[4]); ?>">
         <div class="info">
-            <h1><?php echo $mostrar["Nombre"]; ?></h1>
-            <h2>Lt:$<?php echo $mostrar["Precio"]; ?></h2>
+            <h1><?php echo $mostrar[1]; ?></h1>
+            <h2>Lt:$<?php echo $mostrar[2]; ?></h2>
             <h4>Vendidos:</h4>
         </div>
         <div class="info">
-            <h3>Disponibles: <?php echo $mostrar["Existencia_L"]; ?></h3>
+            <h3>Disponibles: <?php echo $mostrar[3]; ?></h3>
             <h2>Cantidad:</h2>
-            <center><form class="formulario" action="VistaProducto.php" method="POST">
-                <input type="hidden" name="txtProducto" value="<?php echo $mostrar["Nombre"]; ?>">
-                <input class="cantidad" type="number" name="txtCantidad" value="1"><br><br><br> 
-                <input class="botones" type="submit" value="Agregar al carrito" name="btnAgregar"><br><br>
-                <input class="botones" type="submit" value="Comprar ahora" name="btnComprar">
-            </form></center>
+            <center><div class="formulario">
+                <input class="cantidad" type="number" name="cantidad" value="1"><br><br><br> 
+                <a href="Carrito/Carrito.php?id=<?php echo $mostrar[0]; ?>"><input class="botones" type="submit" value="Agregar al carrito" name="btnAgregar"></a><br><br>
+                <a href=""><input class="botones" type="submit" value="Comprar ahora" name="btnComprar"></a>
+            </div></center>
         </div>
     </div>
-    
+
     <h1>Productos similares</h1>
 
     <footer>

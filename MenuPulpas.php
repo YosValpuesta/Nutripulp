@@ -29,7 +29,7 @@ $resultado = $conexion->query($productos);
 
     <h1>Pulpas de Fruta</h1>
     <?php
-        while ($mostrar = $resultado->fetch_assoc()) { 
+        while ($mostrar = mysqli_fetch_array($resultado)) { 
     ?>
         <div class = "galeria" >
             <div class = "foto">
