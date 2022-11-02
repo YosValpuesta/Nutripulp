@@ -1,15 +1,7 @@
-<?php session_start();
+<?php
 include 'ConexionBD/Conexion.php';
-
-/*$id = $_REQUEST['id'];
-
-$productos = "SELECT * FROM productos WHERE id = '$id' ";
-$resultado = $conexion->query($productos);
-$mostrar = mysqli_fetch_row($resultado);*/
-
 if (isset($_GET['id'])) {
-    $productos = "SELECT * FROM productos WHERE id = " .$_GET['id'];
-    $resultado = $conexion->query($productos);
+    $resultado = $conexion -> query("SELECT * FROM productos WHERE id = " .$_GET['id']) or die ($conexion -> error);
     if (mysqli_num_rows($resultado) > 0) {
         $mostrar = mysqli_fetch_row($resultado);
     } else {
@@ -43,7 +35,7 @@ if (isset($_GET['id'])) {
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
             <a href="MenuPulpas.php">Menú</a>
-            <a href="MiCarrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
+            <a href="Carrito/Carrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
 </header>
 

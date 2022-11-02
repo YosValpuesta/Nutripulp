@@ -1,9 +1,12 @@
 <?php
-    $conexion = new mysqli("localhost", "root", "", "nutripulp");
+    $servidor = "localhost";
+    $nombreBD = "nutripulp";
+    $usuario = "root";
+    $contraseña = "";
+
+    $conexion = new mysqli($servidor, $usuario, $contraseña, $nombreBD);
     
-    if ($conexion) {
-        
-    } else {
-        echo "No conecto";
+    if ($conexion -> connect_error) {
+        die("No se pudo conectar");
     }
 ?>

@@ -1,7 +1,6 @@
 <?php
 include 'ConexionBD/Conexion.php';
-$productos = "SELECT * FROM productos WHERE id <= 4";
-$resultado = $conexion->query($productos);
+$resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY id DESC") or die ($conexion -> error);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ $resultado = $conexion->query($productos);
 </head>
 <body>
 <header> 
-    <img id="Logo" src="Logo.png" width="250px" height="165px">  
+    <img id="Logo" src="Logo.png" width="250px" height="165px">
     <form action="" method="GET">
         <input id="busqueda" type="search" placeholder="Buscar" name="busqueda">
     </form>
@@ -27,7 +26,7 @@ $resultado = $conexion->query($productos);
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
             <a href="MenuPulpas.php">Menú</a>
-            <a href="MiCarrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
+            <a href="Carrito/Carrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
 </header>
 

@@ -1,10 +1,10 @@
-<?php session_start(); 
+<?php 
+session_start(); 
 include '../ConexionBD/Conexion.php';
-
-if (isset($_SESSION['carrito'])) {
+if (isset($_SESSION['MiCarrito'])) {
     //Si existe buscamos si ya estaba agregado el producto
     if (isset($_GET['id'])) {
-        $arreglo = $_SESSION['carrito'];
+        $arreglo = $_SESSION['MiCarrito'];
         $encontro = false;
         $numero = 0;
         for ($i = 0; $i < count($arreglo); $i++) {
@@ -15,49 +15,49 @@ if (isset($_SESSION['carrito'])) {
         }
         if ($encontro == true) {
             $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + 1;
-            $_SESSION['carrito'] = $arreglo; 
+            $_SESSION['MiCarrito'] = $arreglo;
         } else {
             //No estaba el registro
             $nombre = "";
             $precio = "";
             $imagen = "";
-            $productos = "SELECT * FROM productos WHERE id = " .$_GET['id'];
-            $resultado = $conexion->query($productos);
+            $resultado = $conexion -> query ('SELECT * FROM productos WHERE id = ' .$_GET['id']) or die ($conexion -> error);
             $mostrar = mysqli_fetch_row($resultado);
             $nombre = $mostrar[1];
             $precio = $mostrar[2];
             $imagen = $mostrar[4];
-            $arregloNuevo = array(
+            $arregloNuevo = array (
                             'Id'=> $_GET['id'], 
                             'Nombre'=> $nombre,
                             'Precio'=> $precio,
                             'Imagen'=> $imagen,
-                            'Cantidad' => 1 );
+                            'Cantidad' => 1);
             array_push($arreglo, $arregloNuevo);
-            $_SESSION['carrito'] = $arreglo; 
-        }
-    } else {
-        //Creamos la variable de sesion
-        if (isset($_GET['id'])) {
-            $nombre = "";
-            $precio = "";
-            $imagen = "";
-            $productos = "SELECT * FROM productos WHERE id = " .$_GET['id'];
-            $resultado = $conexion->query($productos);
-            $mostrar = mysqli_fetch_row($resultado);
-            $nombre = $mostrar[1];
-            $precio = $mostrar[2];
-            $imagen = $mostrar[4];
-            $arreglo[] = array(
-                        'Id'=> $_GET['id'], 
-                        'Nombre'=> $nombre,
-                        'Precio'=> $precio,
-                        'Imagen'=> $imagen,
-                        'Cantidad' => 1);
-            $_SESSION['carrito'] = $arreglo;
+            $_SESSION['MiCarrito'] = $arreglo;
         }
     }
+} else {
+    //Creamos la varible
+    if (isset($_GET['id'])) {
+        $nombre = "";
+        $precio = "";
+        $imagen = "";
+        $resultado = $conexion -> query ('SELECT * FROM productos WHERE id = ' .$_GET['id']) or die ($conexion -> error);
+        $mostrar = mysqli_fetch_row($resultado);
+        $nombre = $mostrar[1];
+        $precio = $mostrar[2];
+        $imagen = $mostrar[4];
+        $arreglo[] = array (
+                    'Id'=> $_GET['id'], 
+                    'Nombre'=> $nombre,
+                    'Precio'=> $precio,
+                    'Imagen'=> $imagen,
+                    'Cantidad' => 1);
+        $_SESSION['MiCarrito'] = $arreglo;
+    }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -95,15 +95,15 @@ if (isset($_SESSION['carrito'])) {
             <td id="encabezado"></td>
         </tr>
     <?php
-        if (isset($_SESSION['carrito'])) {
-            $arregloCarrito = $_SESSION['carrito'];
+        if (isset($_SESSION['MiCarrito'])) {
+            $arregloCarrito = $_SESSION['MiCarrito'];
             for ($i = 0; $i < count($arregloCarrito); $i++) {     
     ?>
         <tr>
             <td><img width="180px" height="130px" src="data:image/png;base64,<?php echo base64_encode($arregloCarrito[$i]['Imagen']); ?>"></td>
-            <td id="nombre"><h3><?php echo $arregloCarrito[$i]['Nombre']; ?></h3></td>
+            <td><h3><?php echo $arregloCarrito[$i]['Nombre']; ?></h3></td>
             <td><h3>$<?php echo $arregloCarrito[$i]['Precio']; ?></h3></td>
-            <td id="cantidad"><input class="cantidad" type="number" name="cantidad" value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>"></td>
+            <td><input class="cantidad" type="number" name="cantidad" value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>"></td>
             <td><h3>$<?php echo $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']; ?></td></h3>
             <td><a class="btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id']; ?>">Eliminar</a></td>
         </tr>

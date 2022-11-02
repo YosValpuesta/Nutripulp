@@ -1,6 +1,6 @@
-<?php session_start();
-
-$arreglo = $_SESSION['carrito'];
+<?php 
+session_start();
+$arreglo = $_SESSION['MiCarrito'];
 for ($i = 0; $i < count($arreglo); $i++) {
     if($arreglo[$i]['Id'] != $_POST['id']) {
         $arregloNuevo[] = array(
@@ -13,10 +13,10 @@ for ($i = 0; $i < count($arreglo); $i++) {
     }
 }
 if (isset($arregloNuevo)) {
-    $_SESSION['carrito'] = $arregloNuevo;
+    $_SESSION['MiCarrito'] = $arregloNuevo;
 } else {
     //El registro a eliminar es el unico por ello elimina la sesion
-    unset($_SESSION['carrito']);
+    unset($_SESSION['MiCarrito']);
 }
-echo "listo";
+echo "Listo";
 ?>

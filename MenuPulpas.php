@@ -1,7 +1,6 @@
 <?php
 include 'ConexionBD/Conexion.php';
-$productos = "SELECT * FROM productos";
-$resultado = $conexion->query($productos);
+$resultado = $conexion -> query ("SELECT * FROM productos") or die ($conexion -> error);
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +21,8 @@ $resultado = $conexion->query($productos);
         <nav>
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
-            <a href="MenuPulpas.html">Menú</a>
-            <a href="MiCarrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
+            <a href="MenuPulpas.php">Menú</a>
+            <a href="Carrito/Carrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
 </header>
 
