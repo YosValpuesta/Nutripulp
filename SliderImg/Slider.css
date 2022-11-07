@@ -1,6 +1,6 @@
 .slider{
-    width: 95%;
-    height: 400px;
+    max-width: 90%;
+    max-height: 390px;
     margin: auto;
     overflow: hidden;
     margin-top: 20px;    

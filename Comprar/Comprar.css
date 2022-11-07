@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /* Info */
-
 table{
     align-self: center;
     border-color: black;
     text-align: center;
+    max-width: 80%;
 }
 
 td{
@@ -18,17 +17,18 @@ td{
     color: rgb(255, 255, 255);
 }
 
-/*Boton Eliminar*/
-table .btnEliminar{ 
+/*Boton Direccion*/
+table .direc{ 
     background-color: rgb(87, 155, 55);
     color: rgb(255, 255, 255);
     text-align: center;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 23px;
     border-radius: 5px;
+    max-width: 80%;
 }
 
-table .btnEliminar:hover {
+table .direc:hover {
     background-color: rgb(191, 202, 35);
     color: rgb(0, 0, 0);
     cursor: pointer; 
@@ -36,17 +36,18 @@ table .btnEliminar:hover {
     opacity: 1;
 }
 
-/*Boton ComprarAhora*/
-table .btnPago{ 
-    background-color: rgb(87, 155, 55);
+/*Boton Nota Factura*/
+table .notaFac{ 
+    background-color: rgb(99, 86, 1);
     color: rgb(255, 255, 255);
     text-align: center;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 23px;
     border-radius: 5px;
+    max-width: 30%;
 }
 
-table .btnPago:hover {
+table .notaFac:hover {
     background-color: rgb(191, 202, 35);
     color: rgb(0, 0, 0);
     cursor: pointer; 
@@ -54,25 +55,19 @@ table .btnPago:hover {
     opacity: 1;
 }
 
-/*Cantidad*/
-table .divCantidad{
-    display: flex;
-    justify-content: center;
-}
-
-/*Boton Pago*/
-.total .boton1 .boton { 
-    background-color: rgb(87, 155, 55);
+/*Boton Finalizar compra*/
+table .compraFina{ 
+    background-color: rgb(0, 62, 83);
     color: rgb(255, 255, 255);
     text-align: center;
-    max-width: 100%;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    max-height: 50px;
+    font-size: 23px;
+    border-radius: 5px;
+    max-width: 80%;
 }
 
-.total .boton1 .boton:hover {
-    background-color: rgb(191, 202, 35);
+table .compraFina:hover {
+    background-color: rgb(255, 147, 14);
     color: rgb(0, 0, 0);
     cursor: pointer; 
     transform: translatex(0px);

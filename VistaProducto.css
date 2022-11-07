@@ -54,18 +54,44 @@ div.producto{
     font-size: 30px;
 }
 
+/*Cantidad*/
 .producto .info .formulario{
     background-color: rgb(135, 111, 176);
     margin-top: -70px;
     margin-bottom: 10px;
 }
 
-.producto .info .formulario .cantidad{
-    color: black;
-    font-size: 25px;
-    width: 30%;
-    text-align: center;
-    margin-top: -20px;
+.producto .info .formulario .divCantidad{
+    background-color: rgb(135, 111, 176);
+    margin-top: -70px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.producto .info .formulario .divCantidad .boton{
+    width: 37px;
+    height: 37px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto .info .formulario .divCantidad .boton:active{
+    background: #ccc;
+}
+
+.producto .info .formulario .divCantidad .cantidad{
+    width: 80px;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 41px;
+    font-size: 22px;
 }
 
 /*Botones*/
@@ -86,3 +112,5 @@ div.producto{
     transform: translatex(0px);
     opacity: 1;
 }
+
+

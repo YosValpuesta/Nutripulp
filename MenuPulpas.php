@@ -1,6 +1,6 @@
 <?php
 include 'ConexionBD/Conexion.php';
-$resultado = $conexion -> query ("SELECT * FROM productos") or die ($conexion -> error);
+$resultado = $conexion -> query ("SELECT * FROM productos WHERE Existencia_L > 0") or die ($conexion -> error);
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +11,21 @@ $resultado = $conexion -> query ("SELECT * FROM productos") or die ($conexion ->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Nutripulp </title>
     <script src="https://kit.fontawesome.com/2c4007a4a1.js" crossorigin="anonymous"></script> <!--IconosRedes-->
+    <link rel="icon" href="Img/Logo.png">
     <link rel="stylesheet" href="General.css">
     <link rel="stylesheet" href="MenuPulpas.css">
 </head>
 <body>
 <header> 
-    <img id="Logo" src="Logo.png" width="250px" height="165px"> 
-        <input id="Barra" type="search" placeholder="Buscar">
+    <img id="Logo" src="Img/Logo.png" width="250px" height="165px"> 
+    <form action="Busqueda.php" method="GET">
+        <input id="busqueda" type="search" placeholder="Buscar" name="busqueda">
+    </form>
         <nav>
             <a href="">Yos Valpuesta</a>
             <a href="">Mis compras</a>
             <a href="MenuPulpas.php">Menú</a>
-            <a href="Carrito/Carrito.php"><img src="Carrito.png" alt="" width="40px" height="40px"></a>
+            <a href="Carrito/Carrito.php"><img src="Img/Carrito.png" alt="" width="40px" height="40px"></a>
         </nav>
 </header>
 
@@ -36,7 +39,7 @@ $resultado = $conexion -> query ("SELECT * FROM productos") or die ($conexion ->
             </div>
             <div class = "datos">
                 <p>1Lt <?php echo $mostrar["Nombre"]; ?></p>
-                <p>$<?php echo $mostrar["Precio"]; ?></p>
+                <p>$<?php echo number_format($mostrar["Precio"], 2, '.', ''); ?></p>
                 <form class="boton1" action="VistaProducto.php?id=<?php echo $mostrar['id']; ?>" method="POST" enctype="multipart/form-data">
                     <input class="boton" type="submit" value="Ver producto" name="btnVer">
                 </form>

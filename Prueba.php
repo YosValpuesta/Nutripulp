@@ -9,27 +9,40 @@ $resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/2c4007a4a1.js" crossorigin="anonymous"></script> <!--IconosRedes-->
+    <title>Nutripulp</title>
     <link rel="icon" href="Img/Logo.png">
     <link rel="stylesheet" href="SliderImg/Slider.css">
     <link rel="stylesheet" href="General.css">
     <link rel="stylesheet" href="MenuPulpas.css">
-    <title>Nutripulp</title>
 </head>
 <body>
-<header> 
-    <img id="Logo" src="Img/Logo.png" width="250px" height="165px">
-    <form action="Busqueda.php" method="GET">
-        <input id="busqueda" type="search" placeholder="Buscar" name="busqueda">
-    </form>
+    <header> 
+        <a href="../Principal.php"><img src="../Img/Logo.png" id="Logo" width="172px" height="115px"></a>
         <nav>
-            <a href="">Yos Valpuesta</a>
-            <a href="">Mis compras</a>
-            <a href="MenuPulpas.php">Menú</a>
-            <a href="Carrito/Carrito.php"><img src="Img/Carrito.png" alt="" width="40px" height="40px"></a>
+            <ul>
+                <div id="barra">
+                    <li><a href="#"><img src="../Img/Carrito.png" id="Carrito"></a></li>
+                    <li><a href="../MenuPulpas.php">Menú</a></li>
+                    <li><a href="../empresa/empresa.php">Empresa</a></li>
+                    <li><a href="###">Mis Compras</a></li>
+                    <li><a href="###">Yos Valpuesta</a></li>
+                    <li class="accion"><a href="#"><ion-icon name="person-circle-outline"></ion-icon></a>
+                    <div class="mostrar">
+                        <a href="###">Actualizar datos</a>
+                        <a href="###">Eliminar cuenta</a>
+                        <a href="###">Acerda de</a>
+                        <a href="">Cerrar sesión</a>
+                    </div>
+                    </li>
+                    <form action="Busqueda.php" method="GET">
+                        <input type="search" placeholder="Buscar" name="busqueda">
+                    </form>
+                </div>
+                </div>
+            </ul>
         </nav>
-</header>
-
+    </header>
+    <br><br><br><br><br><br>
     <div class = "slider">
         <ul>
             <li><img src="SliderImg/Slider1.jpg"></li>
@@ -38,11 +51,12 @@ $resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY 
             <li><img src="SliderImg/Slider4.jpg"></li>
         </ul>
     </div>
-
-    <h1>Productos más vendidos</h1>
+    <br>
+    <h1 id="Titulo">Productos más vendidos</h1>
     <?php
         while ($mostrar = mysqli_fetch_array($resultado)) { 
     ?>
+    <div class="container">
         <div class = "galeria" >
             <div class = "foto">
                 <img width="130px" height="90px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
@@ -55,29 +69,28 @@ $resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY 
                 </form>
             </div>
         </div>
+    </div>
     <?php
         } 
     ?>
- <footer>
+    <footer>
         <div class="grupo1">
             <div class="box">
                 <center><h2>Contacto</h2></center>
-                <p>Whatsapp: 5575625202
-                   Telefono: 55 5603 3859</p>
+                <p>Whatsapp: 5575625202</p>
+                <p>Telefono: 55 5603 3859</p>
                 <p>Email: ventas@nutripulp.com</p>
             </div>
             <div class="box">
-                <h2>SIGUENOS EN REDES</h2>
+                <center><h2>Siguenos en redes</h2></center>
                 <div class="redes">
-                    <a href="https://www.facebook.com/nutripulpmx" target="_blank" class="fa fa-facebook"></a>
+                    <center><a href="https://www.facebook.com/nutripulpmx" target="_blank" class="fa fa-facebook"></a>
                     <a href="https://www.instagram.com/nutripulp/" target="_blank" class="fa fa-instagram"></a>
-                    <a href="https://twitter.com/NutriPulp" target="_blank" class="fa fa-twitter"></a>
+                    <a href="https://twitter.com/NutriPulp" target="_blank" class="fa fa-twitter"></a></center>
                 </div>
+                <p id="derechos"><small>&copy; 2022 <b>Nutripulp</b> -Todos los Derechos Reservados.</small></p>
             </div>
-        </div>
-        <div class="grupo2">
-            <small>&copy; 2022 <b>Nutripulp</b> -Todos los Derechos Reservados.</small>
-        </div>
     </footer>
+
 </body>
 </html>
