@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*botones*/
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /*datos*/
+
+div.productos{
+    margin-top: -50px;
+}
+
+div.galeria {
+    margin: 15px 15px;
+    box-shadow: 0 4px 8px 0 cyan, 0 6px 20px 0 black;
+    float: left;
+    width: 270px;
+    margin-left: 20px;
+    height: 330px;
+}
+
+div.galeria img {
+    width: 100%;
+    height: auto;
+}
+
+div.datos {
+    text-align: center;
+    text-shadow: 2px 2px 5px yellowgreen;
+    height: 130px;
+}
+
+p{
+    margin-top: 0px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+}
+
+#precio{
+    margin-top: -20px;
+    margin-bottom: -45px;
+}
+
+#precioMenu{
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+#precioBusqueda{
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+/*Boton Ver Producto*/
+.galeria .datos .boton1 .boton { 
+    margin-top: -30px;
+    background-color: rgb(87, 155, 55);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    max-width: 70%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    height: 40px;
+}
+
+.galeria .datos .boton1 .boton:hover {
+    background-color: rgb(191, 202, 35);
+    color: rgb(0, 0, 0);
+    cursor: pointer; 
+    transform: translatex(0px);
+    opacity: 1;
+}
+
+/*Paginador*/
+.paginador ul{
+    padding: 15px;
+    list-style: none;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.paginador a, .pagActual{
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 35px;
+}
+
+.paginador a:hover{
+    background-color: rgb(248, 222, 138);
+    color: black;
+}
+
+.pagActual{
+    color: rgb(255, 255, 255);
+    background-color: rgb(208, 111, 0);
+}

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'); /*Info producto*/
+
+#proSimilares{
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
+
+div.producto{
+    background-color: rgb(135, 111, 176);
+    display: flex;
+    max-width: 96%;
+    height: 250px;
+    margin: auto;
+    border-radius: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10%;
+    padding: 5px 10px;
+}
+
+div.imagen{
+    margin-left: 65px;
+    max-width: max-content;
+}
+
+#pulpa{
+    height: 180px;
+    margin-top: -50px;
+}
+
+.producto .info{
+    max-width: 30%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(135, 111, 176);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.producto .info h1{
+    color: rgb(0, 0, 0);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 0px;
+    font-size: 45px;
+}
+
+.producto .info .formulario h2{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 30px;
+}
+
+.producto .info h2{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 30px;
+}
+
+.producto .info h4{
+    color: rgba(0, 0, 0, 0.644);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.producto .imagen h6{
+    color: rgba(0, 0, 0, 0.644);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/*Cantidad*/
+.producto .info .formulario .cantidad{
+    width: 40px;
+    height: 37px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+/*Botones*/
+.producto .info .formulario .btncarrito { 
+    background-color: rgb(87, 155, 55);
+    color: rgb(255, 255, 255);
+    max-width: 95%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    height: 40px;
+}
+
+.producto .info .formulario .btncarrito:hover {
+    background-color: rgb(191, 202, 35);
+    color: rgb(0, 0, 0);
+    cursor: pointer; 
+    transform: translatex(0px);
+    opacity: 1;
+}
+
+@media (max-width:800px) {
+    div.producto{
+        grid-gap: 5%;
+        height: 200px;
+    }
+
+    #pulpa{
+        height: 110px;
+    }
+
+    div.imagen{
+        margin-left: 15px;
+    }
+
+    .producto .info h1{
+        font-size: 30px;
+    }
+
+    .producto .info h2{
+        font-size: 20px;
+    }
+
+    .producto .info .formulario h2{
+        font-size: 20px;
+    }
+
+    .producto .info h4{
+        font-size: 13px;
+    }
+
+    .producto .info .formulario .cantidad{
+        width: 30px;
+        height: 20px;
+        font-size: 16px;
+    }
+
+    .producto .info .formulario .btncarrito { 
+        max-width: 92%;
+        font-size: 13px;
+        height: 35px;
+    }
+}

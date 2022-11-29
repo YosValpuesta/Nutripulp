@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /*h1*/
+
+body{
+    margin: 0;
+    left: 0;
+    top: 0;
+    padding: 0;
+    background-color: #EFECEC;
+}
+
+h1 {
+    color:rgb(19, 19, 19);
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 50px;
+}
+
+#busquedah1{
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+#menuh1{
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+#carritoh1{
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+#comprarh1{
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+#productosComprados{
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+
+

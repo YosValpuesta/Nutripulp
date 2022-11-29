@@ -1,0 +1,57 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color:#bebebe;
+
+}
+#imagen{
+    width: 100%;
+    padding-bottom: 50px;
+    border-radius:10%;
+}
+
+.elemento{
+display: grid;
+grid-template-columns: 60% 40%;
+
+}
+p{
+
+    font-style: oblique;
+    font-size: 25px;
+    margin: 25px;
+    color: rgb(75, 75, 75);
+    
+}
+strong{
+    color: rgb(0, 0, 0);
+}
+.container{
+    padding-top: 120px;
+    margin-left:5% ;
+    max-width: 90%;
+    background: rgb(231, 231, 231);
+    /* position:relative;  */
+}
+h1{
+    color: #002133;
+    font-size: 35px;
+    text-shadow: 2px 2px 7px #4c5055;
+    text-align: center;
+}
+footer{
+
+    background-color: #044259;
+    position:absolute;
+    /* height: 120px;
+    position: relative;
+    opacity: 70%;
+    bottom:0px;
+    left: 0;
+    right:0px; */
+    width: 100%;
+
+}
+#logoBajo{
+    float: right;
+}

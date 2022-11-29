@@ -1,6 +1,11 @@
 <?php 
 session_start(); 
 include '../ConexionBD/Conexion.php';
+$nombre = "";
+$precio = "";
+$imagen = "";
+$cantidad = "";
+$stock = "";
 if (isset($_SESSION['MiCarrito'])) {
     //Si existe buscamos si ya estaba agregado el producto
     if (isset($_GET['id'])) {
@@ -14,92 +19,88 @@ if (isset($_SESSION['MiCarrito'])) {
             }
         }
         if ($encontro == true) {
-            $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + 1;
+            $cantidad = $_POST["cantidad"];
+            $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + $cantidad;
             $_SESSION['MiCarrito'] = $arreglo;
+            $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
         } else {
-            //No estaba el registro
-            $nombre = "";
-            $precio = "";
-            $imagen = "";
             $resultado = $conexion -> query ('SELECT * FROM productos WHERE id = ' .$_GET['id']) or die ($conexion -> error);
             $mostrar = mysqli_fetch_row($resultado);
             $nombre = $mostrar[1];
             $precio = $mostrar[2];
             $imagen = $mostrar[4];
-            $arregloNuevo = array (
-                            'Id'=> $_GET['id'], 
-                            'Nombre'=> $nombre,
-                            'Precio'=> $precio,
-                            'Imagen'=> $imagen,
-                            'Cantidad' => 1);
-            array_push($arreglo, $arregloNuevo);
-            $_SESSION['MiCarrito'] = $arreglo;
+            $stock = $mostrar[3];
+            $cantidad = $_POST["cantidad"];
+            if ($cantidad > 0) {
+                if ($cantidad <= $stock) {
+                   $arregloNuevo = array (
+                                    'Id'=> $_GET['id'], 
+                                    'Nombre'=> $nombre,
+                                    'Precio'=> $precio,
+                                    'Imagen'=> $imagen,
+                                    'Cantidad' => $cantidad,
+                                    'Stock' => $stock);      
+                    array_push($arreglo, $arregloNuevo);
+                    $_SESSION['MiCarrito'] = $arreglo; 
+                    $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
+                } else
+                    echo "<script>alert('La cantidad deseada exede el numero de productos disponibles');</script>";
+            } else
+                echo "<script>alert('La cantidad debe ser mayor a 0');</script>";
         }
-    }
+    } 
 } else {
     //Creamos la varible
     if (isset($_GET['id'])) {
-        $nombre = "";
-        $precio = "";
-        $imagen = "";
         $resultado = $conexion -> query ('SELECT * FROM productos WHERE id = ' .$_GET['id']) or die ($conexion -> error);
         $mostrar = mysqli_fetch_row($resultado);
         $nombre = $mostrar[1];
         $precio = $mostrar[2];
         $imagen = $mostrar[4];
-        $arreglo[] = array (
-                    'Id'=> $_GET['id'], 
-                    'Nombre'=> $nombre,
-                    'Precio'=> $precio,
-                    'Imagen'=> $imagen,
-                    'Cantidad' => 1);
-        $_SESSION['MiCarrito'] = $arreglo;
-    }
+        $stock = $mostrar[3];
+        $cantidad = $_POST["cantidad"]; 
+        if ($cantidad > 0) {
+            if ($cantidad <= $stock) {
+                $arreglo[] = array (
+                            'Id'=> $_GET['id'], 
+                            'Nombre'=> $nombre,
+                            'Precio'=> $precio,
+                            'Imagen'=> $imagen,
+                            'Cantidad' => $cantidad,
+                            'Stock' => $stock);
+                $_SESSION['MiCarrito'] = $arreglo;
+                $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
+            } else 
+                echo "<script>alert('La cantidad deseada exede el numero de productos disponibles');</script>";
+        } else
+            echo "<script>alert('La cantidad debe ser mayor a 0');</script>";
+    } 
 }
-
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!--Libreria JQuery-->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../Img/Logo.png">
-    <link rel="stylesheet" href="../General.css">
+    <link rel="stylesheet" href="../Productos/General.css">
     <link rel="stylesheet" href="Carrito.css">
-    <script src="https://kit.fontawesome.com/2c4007a4a1.js" crossorigin="anonymous"></script> <!--IconosRedes-->
     <title>Carrito de compras</title>
 </head>
 <body>
-<header> 
-    <img id="Logo" src="../Img/Logo.png" width="250px" height="165px"> 
-    <form action="../Busqueda.php" method="GET">
-        <input id="busqueda" type="search" placeholder="Buscar" name="busqueda">
-    </form>
-        <nav>
-            <a href="">Yos Valpuesta</a>
-            <a href="">Mis compras</a>
-            <a href="../MenuPulpas.php">Menú</a>
-            <a href="Carrito.php"><img src="../Img/Carrito.png" alt="" width="40px" height="40px"></a>
-        </nav>
-</header>
-
-    <h1>Mi Carrito</h1>
-    <center><table cellspacing="2" border="10" class="carrito">
+    <?php include '../Nav/Header.php' ?>
+    <h1 id="carritoh1">Mi Carrito</h1>
+    <table cellspacing="2" border="10" align="center">
         <tr>
             <td id="encabezado" colspan="2">Producto</td>
             <td id="encabezado">Precio</td>
             <td id="encabezado">Cantidad</td>
             <td id="encabezado">SubTotal</td>
-            <td id="encabezado" colspan="2">-----------------------</td>
+            <td id="encabezado"></td>
         </tr>
     <?php
         $subTotal = 0; //Cada producto
         $total = 0; //Suma productos
-        $totalEnvio = 0;
+        $totalEnvio = 0; 
         if (isset($_SESSION['MiCarrito'])) {
             $arregloCarrito = $_SESSION['MiCarrito'];
             for ($i = 0; $i < count($arregloCarrito); $i++) {  
@@ -112,92 +113,49 @@ if (isset($_SESSION['MiCarrito'])) {
                 }
     ?>
         <tr>
-            <td><img width="180px" height="130px" src="data:image/png;base64,<?php echo base64_encode($arregloCarrito[$i]['Imagen']); ?>"></td>
+            <td><img id="productoImg" src="data:image/png;base64,<?php echo base64_encode($arregloCarrito[$i]['Imagen']); ?>"></td>
             <td><h3><?php echo $arregloCarrito[$i]['Nombre']; ?></h3></td>
             <td><h3>$<?php echo $arregloCarrito[$i]['Precio']; ?></h3></td>
+            <td><h3><?php echo $arregloCarrito[$i]['Cantidad']; ?> Lts</h3></td>
+            <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>"><h3>$<?php echo number_format($subTotal,2,'.','');?></h3></td>
             <td>
-                <div>
-                    <!--<button class="boton menos Incrementar">-</button>-->
-                    <input class="cantidad" type="text" name="cantidad" value="1" 
-                    data-precio="<?php echo $arregloCarrito[$i]['Precio']; ?>" 
-                    data-id="<?php echo $arregloCarrito[$i]['Id']; ?>" 
-                    value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" >
-                    <!--<button class="boton mas Incrementar">+</button>-->
-                </div>
+                <a class="btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id']; ?>">Eliminar</a>
             </td>
-            <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>">
-            <h3>$<?php echo number_format($subTotal,2,'.','');?></h3>
-            </td>
-            <td><a class="btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id']; ?>">Eliminar</a></td>
-            <td><a class="btnPago">Comprar ahora</a></td>
         </tr>
     <?php
             }
         }
     ?>
-    </table></center>
-    <br><br>
-    <center><table class="total" cellspacing="2" border="10">
+    </table>
+    <br>
+    <table class="total" cellspacing="2" border="10" align="center">
         <tr>
             <td id="encabezado" colspan="2">Total</td>
         </tr>
         <tr>
-            <td>SubTotal</td>
-            <td><h3>$<?php echo number_format($total,2,'.',''); ?></h3></td>
+            <td ALIGN=LEFT><b>SubTotal:</b></td>
+            <td>$<?php echo number_format($total,2,'.',''); ?></td>
         </tr>
         <tr>
-            <td>Envío</td>
-            <td>
-                <?php if ($totalEnvio >= 595 ) {
+            <td ALIGN=LEFT><b>Envío:</b></td>
+            <td><b>
+                <?php if ($total >= 595 ) {
                         echo ("Envio gratis");
                       } else {
                         echo ("$150.00");
                       }?>
-            </td>
+            </b></td>
         </tr>
         <tr>
-            <td>Total</td>
-            <td><h3>$<?php echo number_format($totalEnvio,2,'.',''); ?></h3></td>
+            <td ALIGN=LEFT><b>Total:</b></td>
+            <td>$<?php echo number_format($totalEnvio,2,'.',''); ?></td>
         </tr>
         <tr>
             <td class="boton1" colspan="2">
                 <input class="boton" onclick="window.location='../Comprar/Comprar.php'" type="submit" value="Proceder al pago" name="btnPago">             
             </td>
         </tr>
-    </table></center>
-
-    <!--Cantidad-->
-    <!--<script>
-        var incrementBoton = document.getElementsByClassName('mas');
-        var decrementBoton = document.getElementsByClassName('menos');
-        //Increment
-        for (var i = 0; i < incrementBoton.length; i++) {
-            var boton = incrementBoton[i];
-            boton.addEventListener('click', function(event) {
-                var botonClicked = event.target;
-                var input = botonClicked.parentElement.children[1];
-                var inputValue = input.value;
-                var newValue = parseInt(inputValue) + 1;
-                input.value = newValue;
-            })
-        }
-        //Decrement
-        for (var i = 0; i < decrementBoton.length; i++) {
-            var boton = decrementBoton[i];
-            boton.addEventListener('click', function(event) {
-                var botonClicked = event.target;
-                var input = botonClicked.parentElement.children[1];
-                var inputValue = input.value;
-                var newValue = parseInt(inputValue) - 1;
-                if (newValue >= 1) {
-                    input.value = newValue;
-                } else {
-                    input.value = 1;
-                }
-            })
-        }
-    </script>-->
-
+    </table>
     <!--Eliminar producto en carrito-->
     <script> 
         $(document).ready(function() {
@@ -213,32 +171,7 @@ if (isset($_SESSION['MiCarrito'])) {
                     boton.parent('td').parent('tr').remove();
                 });
             });
-            //Cantidad
-            $(".cantidad").keyup(function() {
-                var cantidad = $(this).val();
-                var precio = $(this).data('precio');
-                var id = $(this).data('id');
-                incrementar(cantidad, precio, id);
-            });
-            //$("Incrementar").click(function() {
-                //var cantidad = $(this).find('input').val();
-                //var precio = $(this).find('input').data('precio');
-                //var id = $(this).find('input').data('id');
-                //incrementar(cantidad, precio, id);
-            //})
-            function incrementar(cantidad, precio, id) {
-                var mult = parseFloat(cantidad) * parseFloat(precio);
-                $(".cant" + id).text("$" + mult);
-                $.ajax ({
-                    method: 'POST',
-                    url: 'ActualizarCarrito.php',
-                    data: {id:id, cantidad:cantidad}
-                }).done(function(respuesta) {
-                    
-                });
-            }
         });
     </script>
-
 </body>
 </html>

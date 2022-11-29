@@ -73,3 +73,22 @@ table .compraFina:hover {
     transform: translatex(0px);
     opacity: 1;
 }
+
+/*Boton Regresar inicio*/
+.btnRegresar{
+    background-color: rgb(0, 62, 83);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 23px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.btnRegresar:hover {
+    background-color: rgb(255, 147, 14);
+    color: rgb(0, 0, 0);
+    cursor: pointer; 
+    transform: translatex(0px);
+    opacity: 1;
+}

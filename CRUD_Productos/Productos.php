@@ -7,19 +7,16 @@ $resultado = $conexion->query($productos);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="icon" href="../Img/Logo.png">
     <link rel="stylesheet" href="Productos.css">
-    <link rel="stylesheet" href="../General.css">
+    <link rel="stylesheet" href="../Productos/General.css">
     <title>Productos Nutripulp</title>
 </head>
 <body>
 <header> 
-    <img id="Logo" src="Logo.png" width="230px" height="145px">
+    <img src="../Img/Logo.png" id="Logo">
 </header>
     <div class="container mt-5">
         <div class="row">
@@ -34,8 +31,9 @@ $resultado = $conexion->query($productos);
                 </form>
             </div>
             <div class="col-md-8">
-                <h2>Productos registrados</h2>
-                <center><table  cellspacing="6" cellpadding="6" border="12">
+                <br><br>
+                <h2 id="productos">Productos registrados</h2>
+                <table  cellspacing="6" cellpadding="6" border="12" align="center">
                     <tr> 
                         <td class="encabezado">ID</td>
                         <td class="encabezado">Nombre</td>
@@ -60,7 +58,7 @@ $resultado = $conexion->query($productos);
             <?php
                 } 
             ?>
-                </table></center>
+                </table>
             </div>
         </div>
     </div>

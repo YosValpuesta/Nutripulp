@@ -3,7 +3,8 @@
     max-height: 390px;
     margin: auto;
     overflow: hidden;
-    margin-top: 20px;    
+    margin-top: -5px;    
+    margin-bottom: -125px;
 }
 
 .slider ul{

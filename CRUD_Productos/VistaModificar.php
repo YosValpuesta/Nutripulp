@@ -1,8 +1,6 @@
 <?php
 include '../ConexionBD/Conexion.php';
-
 $id = $_REQUEST['id'];
-
 $productos = "SELECT * FROM productos WHERE id = '$id' ";
 $resultado = $conexion->query($productos);
 $mostrar = $resultado->fetch_assoc();
@@ -15,12 +13,13 @@ $mostrar = $resultado->fetch_assoc();
     <link rel="icon" href="Logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="../General.css">
+    <link rel="icon" href="../Img/Logo.png">
+    <link rel="stylesheet" href="Productos.css">
     <title>Modificar Registro</title>
 </head>
 <body>
 <header> 
-    <img id="Logo" src="Logo.png" width="230px" height="145px"> 
+    <a href="Productos.php"><img src="../Img/Logo.png" id="Logo"></a>
 </header>
     <div class="container mt-5">
         <div class="row">

@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
-body{
-    padding: 0%;
-    margin: 0%;
-}
-
 footer{
-    position: absolute;
     width: 100%;
     bottom: 0;
 }
@@ -15,10 +9,6 @@ footer .grupo1 {
     background-color: #5f768a;
     width: 100%;
     height: 100px;
-    left: 0;
-    right:0px;
-    position: relative;
-    position: absolute;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 80px;
@@ -42,7 +32,7 @@ footer .grupo1 .box h2 {
 footer .grupo1 .box p {
     color: rgb(226, 226, 238);
     background-color: #5f768a;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
     text-align: center;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;

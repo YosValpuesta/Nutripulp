@@ -1,13 +1,18 @@
 body{
-    padding: 0%;
-    margin: 0%;
+    margin: 0;
 }
 
-/*Barra de menu*/
 header{
     background-color: brown;
-    width: 100%;
-    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
 }
 
 nav ul{
@@ -23,14 +28,12 @@ nav ul li{
 input {
     width: 300px;
     font-size: 30px;
-    margin-left: 0px;
-    margin-top: 20px;
     border-radius: 10px;
 }
 
 nav ul li a{
     display: block; 
-    padding: 10px;
+    padding: 5px;
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
@@ -41,11 +44,13 @@ nav ul li:hover{
 
 #Logo{
     float: left;
+    height: 110px;
+    margin-right: 100px;
 }
 
 #Carrito{
     float: right;
-    max-width: 40px;
+    max-width: 30px;
 }
 
 .mostrar{
@@ -64,3 +69,13 @@ li a:hover{
   color: white;
 }
 
+@media (max-width:800px) {
+    header{
+        flex-direction: column;
+    }
+
+    nav{
+       margin-top: -18px;
+       margin-bottom: -20px;
+    }
+}

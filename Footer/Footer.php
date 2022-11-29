@@ -1,5 +1,5 @@
 <script src="https://kit.fontawesome.com/2c4007a4a1.js" crossorigin="anonymous"></script> <!--IconosRedes-->
-<link rel="stylesheet" href="Footer.css">
+<link rel="stylesheet" href="../Footer/Footer.css">
 
 <footer>
     <div class="grupo1">
