@@ -57,11 +57,6 @@ div.imagen{
     font-family: 'IBM Plex Mono', monospace;
 }
 
-.producto .imagen h6{
-    color: rgba(0, 0, 0, 0.644);
-    font-family: 'IBM Plex Mono', monospace;
-}
-
 /*Cantidad*/
 .producto .info .formulario .cantidad{
     width: 40px;

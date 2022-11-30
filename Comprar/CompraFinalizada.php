@@ -20,7 +20,7 @@ for ($i = 0; $i < count($arreglo); $i++) {
     }
 }  
 //Siempre que se haga una compra
-$conexion -> query("INSERT INTO ventas (id_usuario, Total, Fecha, No_Pedido) VALUES (1,$totalEnvio, CURRENT_TIMESTAMP ,$numero_pedido)") or die($conexion -> error);
+$conexion -> query("INSERT INTO ventas (id_cliente, Total, Fecha, Folio) VALUES (62,$totalEnvio, CURRENT_TIMESTAMP ,$numero_pedido)") or die($conexion -> error);
 $id_venta = $conexion -> insert_id;
 for ($i = 0; $i < count($arreglo); $i++) {
     $conexion -> query("INSERT INTO productos_venta(id_venta, id_producto, Cantidad, Subtotal)
@@ -43,12 +43,12 @@ unset($_SESSION['MiCarrito']);
     <h1>¡Gracias por tu compra!
     <br>
     <?php
-        
     ?>
     Tu pedido <?php echo $numero_pedido ?>
     Ya Fue programado con Éxito</h1>
     <center>
         <input class="btnRegresar" onclick="window.location='../Productos/Index.php'" type="submit" value="Ir a inicio" name="btnInicio">
+        <input class="btnRegresar" onclick="#####" type="submit" value="Descargar Nota">
     </center>
 </body>
 </html>

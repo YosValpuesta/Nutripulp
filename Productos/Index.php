@@ -1,6 +1,6 @@
 <?php
 include '../ConexionBD/Conexion.php';
-$resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY id DESC") or die ($conexion -> error);
+$resultado = $conexion -> query("SELECT * FROM productos ORDER BY RAND() limit 4") or die ($conexion -> error);
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +21,11 @@ $resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY 
             <li><img src="../SliderImg/Slider4.jpg"></li>
         </ul>
     </div>
-    <br><br>
+    <h1>Productos en venta</h1>
     <?php
-        include '../Grafico/Grafico.php'
-        //while ($mostrar = mysqli_fetch_array($resultado)) { 
+        while ($mostrar = mysqli_fetch_array($resultado)) { 
     ?>
-    <!-- <div class="productos">
+    <div class="productos">
         <div class = "galeria" >
             <div class = "foto">
                 <img width="130px" height="90px" src="data:image/png;base64,<?php echo base64_encode($mostrar["Imagen"]); ?>">
@@ -38,9 +37,9 @@ $resultado = $conexion -> query("SELECT * FROM productos WHERE id <= 4 ORDER BY 
                     <input class="boton" type="submit" value="Ver producto" name="btnVer">
                 </form>
             </div>
-        </div>-->
+        </div>
     <?php
-        //} 
+        } 
     ?>
     </div>
     <?php include '../Footer/Footer.php' ?>

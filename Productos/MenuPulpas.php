@@ -73,6 +73,7 @@
             ?>
         </ul>
     </div>
+    <h1>Productos más vendidos</h1>
     <?php 
         include '../Grafico/Grafico.php';
         include '../Footer/Footer.php' 

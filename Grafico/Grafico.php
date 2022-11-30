@@ -24,7 +24,6 @@ $res = $conexion -> query($sql);
         ]);
 
         var options = {
-          title: 'Productos más vendidos', 
           is3D: true,
           pieSliceTextStyle: {
             color: 'black',
@@ -45,7 +44,7 @@ $res = $conexion -> query($sql);
   </head>
   <body>
     <center>
-    <div id="piechart" style="max-width: 900px; height: 300px;"></div>
+    <div id="piechart" style="max-width: 800px; height: 300px;"></div>
     </center>
   </body>
 </html>

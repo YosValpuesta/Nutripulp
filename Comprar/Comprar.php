@@ -1,8 +1,13 @@
 <?php 
+include '../ConexionBD/Conexion.php';
 session_start(); 
 if (!isset($_SESSION['MiCarrito'])) {
     header('Location: ../Productos/MenuPulpas.php');
 }
+$resultado = $conexion -> query("SELECT * FROM domicilio WHERE cliente_id = 62") or die ($conexion -> error);
+$fechaEntrega = $conexion -> query("SELECT DATE_ADD(Fecha, INTERVAL 5 DAY) FROM ventas WHERE id_cliente = 62") or die ($conexion -> error);
+$mostrar = mysqli_fetch_row($resultado);
+$fecha = $fechaEntrega -> fetch_assoc();
 $arreglo = $_SESSION['MiCarrito'];
 ?>
 
@@ -22,22 +27,12 @@ $arreglo = $_SESSION['MiCarrito'];
             <td id="encabezado" colspan="2">Detalles de la entrega</td>
         </tr>
         <tr>
-            <td>
-                CP.09840, Entregamos tu paquete a las 14:15 hrs en Pino Suarez Nº exterior SN, 
-                Iztapalapa, Pueblo los Reyes Culhuacán, Iztapalapa, Distrito Federal.
+            <td ALIGN=LEFT>
+                <b>La entrega de tu pedido seria el: <?php echo $fecha["DATE_ADD(Fecha, INTERVAL 5 DAY)"]; ?></b>
+                <br>
+                <?php echo $mostrar[3]; ?>, Calle: <?php echo $mostrar[4]; ?> Nº interior: <?php echo $mostrar[7]; ?> Nº exterior: <?php echo $mostrar[8]; ?>,
+                <?php echo $mostrar[1]; ?>, <?php echo $mostrar[2]; ?>, <?php echo $mostrar[6]; ?> 
             </td>
-        </tr>
-        <tr>
-            <td id="encabezado" colspan="2">¿Requiere nota o factura?</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input class="notaFac" type="submit" value="Nota">
-                <input class="notaFac" type="submit" value="Factura">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">La fecha de entrega será en 5 días hábiles después de tu compra</td>
         </tr>
     </table>
     <br>

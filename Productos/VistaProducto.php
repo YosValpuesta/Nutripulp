@@ -29,8 +29,8 @@ if (isset($_GET['id'])) {
     <br>
     <div class="producto">
         <div class="imagen">
-            <h6 align="right" >Vendidos:</h6>
-            <br><br><img id="pulpa" src="data:image/png;base64,<?php echo base64_encode($mostrar[4]); ?>">
+            <br><br><br><br><br>
+            <img id="pulpa" src="data:image/png;base64,<?php echo base64_encode($mostrar[4]); ?>">
         </div>
         <div class="info">
             <h1><?php echo $mostrar[1]; ?></h1>

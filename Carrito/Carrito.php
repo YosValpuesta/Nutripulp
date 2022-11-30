@@ -22,7 +22,6 @@ if (isset($_SESSION['MiCarrito'])) {
             $cantidad = $_POST["cantidad"];
             $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + $cantidad;
             $_SESSION['MiCarrito'] = $arreglo;
-            $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
         } else {
             $resultado = $conexion -> query ('SELECT * FROM productos WHERE id = ' .$_GET['id']) or die ($conexion -> error);
             $mostrar = mysqli_fetch_row($resultado);
@@ -42,7 +41,6 @@ if (isset($_SESSION['MiCarrito'])) {
                                     'Stock' => $stock);      
                     array_push($arreglo, $arregloNuevo);
                     $_SESSION['MiCarrito'] = $arreglo; 
-                    $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
                 } else
                     echo "<script>alert('La cantidad deseada exede el numero de productos disponibles');</script>";
             } else
@@ -69,7 +67,6 @@ if (isset($_SESSION['MiCarrito'])) {
                             'Cantidad' => $cantidad,
                             'Stock' => $stock);
                 $_SESSION['MiCarrito'] = $arreglo;
-                $conexion -> query("UPDATE productos SET Existencia_L = Existencia_L - ".$cantidad." WHERE id = ".$_GET['id']) or die($conexion -> error);
             } else 
                 echo "<script>alert('La cantidad deseada exede el numero de productos disponibles');</script>";
         } else

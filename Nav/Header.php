@@ -27,7 +27,6 @@
                     <div class="mostrar">
                         <a href="###">Actualizar datos</a>
                         <a href="###">Eliminar cuenta</a>
-                        <a href="###">Acerda de</a>
                         <a href="">Cerrar sesión</a>
                     </div>
                     </li>
